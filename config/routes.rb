@@ -1,4 +1,10 @@
 FinalProject::Application.routes.draw do
+  resources :users
+
+
+  resources :locations
+
+
   resources :events
 
 
