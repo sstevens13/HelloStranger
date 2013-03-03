@@ -15,13 +15,17 @@
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </div>
+  <div>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
   <div class="field">
     <%= f.label :age %><br />
-    <%= f.number_field :age %>
+    <%= f.select :age, (18..50) %>
   </div>
   <div class="field">
     <%= f.label :orientation %><br />
-    <%= f.text_field :orientation %>
+    <%= f.select :orientation, [['Straight', 'straight'], ['Bisexual', 'bisexual'], ['Gay', 'gay']] %>
   </div>
   <div class="field">
     <%= f.label :religion %><br />
@@ -29,11 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :event_id %><br />
-    <%= f.text_field :event_id %>
+    <%= f.select :gender, [['Male', 'M'], ['Female', 'F']] %>
   </div>
   <div class="actions">
     <%= f.submit %>

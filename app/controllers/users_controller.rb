@@ -25,6 +25,11 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @orientation = [
+        "Bisexual",
+        "Straight",
+        "Gay"
+    ]
 
     respond_to do |format|
       format.html # new.html.erb
