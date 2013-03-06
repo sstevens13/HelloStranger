@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :start %><br />
+    <%= f.label :start %>
     <%= f.datetime_select :start %>
   </div>
   <div class="field">
-    <%= f.label :end %><br />
+    <%= f.label :end %>
     <%= f.datetime_select :end %>
   </div>
   <div class="field">
-    <%= f.label :location_id %><br />
+    <%= f.label :location_id %>
     <%= f.collection_select :location_id, Location.all, :id, :name %>
   </div>
   <div class="actions">
