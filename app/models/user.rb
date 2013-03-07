@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :age, :event_id, :gender, :orientation, :religion, :username, :password
+  attr_accessible :age, :event_id, :gender, :orientation, :religion, :username, :password, :hobbies, :profile, :visible
   has_secure_password
   has_many :events
   has_one :location
