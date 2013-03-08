@@ -1,4 +1,22 @@
 class UsersController < ApplicationController
+
+  before_filter :authorize_user, :only => [:edit, :update, :destroy]
+
+  def authorize_user
+    @user = User.find(params[:id])
+    if @user.id != session[:user_id]
+      redirect_to root_url, notice: "Nice Try"
+    end
+  end
+
+  def is_user
+    @is_user = false
+    if @user.id == session[:user_id]
+      @is_user = true
+    end
+    return @is_user
+  end
+
   # GET /users
   # GET /users.json
   def index
@@ -46,6 +64,8 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+
+    @is_user = is_user
 
     respond_to do |format|
       if @user.save
