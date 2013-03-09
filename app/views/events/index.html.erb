@@ -16,10 +16,11 @@
     <td><%= event.start.strftime("%A, %b %Y at %l:%M%P") %></td>
     <td><%= event.end.strftime("%A, %b %Y at %l:%M%P")  %></td>
     <!-- Refactor this daisy chain of methods -->
-    <td><%= Location.find_by_id(event.location_id).name %></td>
+    <td><%= event.location.name %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Check-in', check_ins_path(event.id), :method => :post  %></td>
   </tr>
 <% end %>
 </table>

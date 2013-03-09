@@ -15,6 +15,14 @@
   <%= @event.location_id %>
 </p>
 
+ <p>
+    <b>Check-ins:</b>
+    <% @event.check_ins.each do |check_in| %>
+      <ul>
+        <li><%= link_to image_tag(check_in.user.avatar.url(:thumb)), user_path(check_in.user) %></li>
+      </ul>
+    <% end %>
+ </p> 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
+    
     @is_user = false
     if @user.id == session[:user_id]
       @is_user = true
