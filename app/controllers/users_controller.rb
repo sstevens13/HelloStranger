@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authorize_user, :only => [:edit, :update, :destroy]
-
+   
   def authorize_user
     @user = User.find(params[:id])
     if @user.id != session[:user_id]
@@ -9,14 +9,21 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users
-  # GET /users.json
+  def checkout
+    @user = User.find(params[:id])
+    @user.update_attributes(:event_id => nil)
+    respond_to do |format|
+      format.html { redirect_to events_path }
+      format.json { render json: @user, notice: 'User has been successfully checked out.' } 
+    end
+  end
+
   def index
-    @users = User.all
+    # @visible = User.visible
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users }
+      format.json { render json: @visible }
     end
   end
 

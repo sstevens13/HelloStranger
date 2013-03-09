@@ -1,7 +1,21 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # befor_filter :require_login
+  helper_method :checked_in?
+
+  def checked_in?
+    @user = User.find(session[:user_id])
+    if @user.nil?
+      return false
+    elsif @user.event_id.nil?
+      return false
+    else
+      return true
+    end
+  end
+
+
+  # before_filter :require_login
 
   # helper_method :current_user_session, :current_user
 

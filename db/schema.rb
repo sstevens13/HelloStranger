@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309163913) do
+ActiveRecord::Schema.define(:version => 20130309223246) do
 
   create_table "check_ins", :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "present"
   end
 
   create_table "events", :force => true do |t|
@@ -50,9 +51,9 @@ ActiveRecord::Schema.define(:version => 20130309163913) do
     t.string   "orientation"
     t.string   "religion"
     t.string   "gender"
-    t.string   "event_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.integer  "event_id",            :limit => 255
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.text     "hobbies"
     t.text     "profile"
     t.string   "password_digest"
