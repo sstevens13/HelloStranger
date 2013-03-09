@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     @user = User.find(session[:user_id])
     if @user.nil?
       return false
-    elsif @user.event_id.nil?
+    elsif @user
       return false
     else
       return true

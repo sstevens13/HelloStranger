@@ -3,7 +3,7 @@ class CheckInsController < ApplicationController
   def create
     @user_id = session[:user_id]
     @event_id = params[:event_id]
-    @check_in = CheckIn.new(:user_id => @user_id, :event_id => @event_id )
+    @check_in = CheckIn.new(user_id: @user_id, event_id: @event_id, present: true )
 
     respond_to do |format|
       if @check_in.save
