@@ -40,6 +40,12 @@
   <%= @user.event_id %>
 </p>
 
+<p>
+  <%= image_tag @user.avatar.url(:medium) %>
+<!--   <%= image_tag @user.avatar.url %>
+  <%= image_tag @user.avatar.url(:thumb) %> -->
+</p>
+
 <% if @is_user %>
   <%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Back', users_path %>

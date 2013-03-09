@@ -46,6 +46,11 @@
     <%= f.text_area :hobbies, :cols => "60", :rows => "5" %>
     <!-- TODO: column width is not correct - css is overriding -->
   </div>
+  <p>
+    <b> Avatar </b><br/>
+    <%= f.file_field :avatar %>
+  </p>
+
   <div class="actions">
     <%= f.submit %>
   </div>
