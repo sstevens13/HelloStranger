@@ -13,8 +13,9 @@
 <% @events.each do |event| %>
   <tr>
     <!-- Update the time to reflect the timezone of the location or CST -->
-    <td><%= event.start.strftime("%A, %b %Y at %l:%M%P") %></td>
-    <td><%= event.end.strftime("%A, %b %Y at %l:%M%P")  %></td>
+    <!-- strftime("%A, %b %Y at %l:%M%P") -->
+    <td><%= event.start %></td>
+    <td><%= event.end %></td>
     <td><%= event.location.name %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
