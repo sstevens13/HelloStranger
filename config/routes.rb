@@ -2,7 +2,7 @@ FinalProject::Application.routes.draw do
 
 
   post 'check_ins/create/:event_id' => 'check_ins#create', :as => :check_ins
-  resources :check_ins
+  # TODO add destroy method for check_ins
 
 
   root to: 'events#index'

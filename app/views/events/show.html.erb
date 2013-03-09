@@ -19,7 +19,7 @@
     <b>Check-ins:</b>
     <% @event.check_ins.each do |check_in| %>
       <ul>
-        <li><%= link_to image_tag(check_in.user.avatar.url(:thumb)), user_path(check_in.user) %></li>
+        <%= link_to image_tag(check_in.user.avatar.url(:thumb)), user_path(check_in.user) %>
       </ul>
     <% end %>
  </p> 
