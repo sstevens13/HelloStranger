@@ -22,6 +22,8 @@
   <div class="field">
     <%= f.label :location_id %>
     <%= f.collection_select :location_id, Location.all, :id, :name %>
+<!-- TODO little hacky -->
+    &nbsp;<%= link_to "Don't see your location? Add it!", new_location_url %><br>
   </div>
   <div class="actions">
     <%= f.submit %>
