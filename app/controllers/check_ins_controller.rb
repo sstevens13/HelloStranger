@@ -3,9 +3,11 @@ class CheckInsController < ApplicationController
   def create
     @user_id = session[:user_id]
     @event_id = params[:event_id]
-    @check_in = CheckIn.new(user_id: @user_id, event_id: @event_id, present: true )
+    @check_in = CheckIn.new user_id: @user_id, event_id: @event_id
 
-    @check_in.save
+    if !@check_in.save
+      @check_in = CheckIn.where(:event_id => @event_id, :user_id => @user_id).first
+    end
 
     respond_to do |format|
 

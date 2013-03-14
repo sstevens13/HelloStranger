@@ -9,15 +9,10 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def check_out
-    checkin = CheckIn.where(:user_id => session[:user_id], :present => true)
-    
-=======
-  def checkout
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
+    logger.info @user.id
     @user.update_attributes(:check_in_id => nil)
->>>>>>> 8c74b86e3b09d583c7db47a16a2f1910be37d32a
     respond_to do |format|
       format.html { redirect_to events_path }
       format.json { render json: @user, notice: 'User has been successfully checked out.' } 
