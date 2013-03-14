@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     @checked_in = CheckIn.where(user_id: session[:user_id], present: true)
     if @checked_in.nil?
       return false
+    end
     return true 
   end
-
 end
 
