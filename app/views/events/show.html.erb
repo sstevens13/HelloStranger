@@ -17,7 +17,7 @@
 
  <p>
     <b>Check-ins:</b>
-    <% @checkins.each do |checkin| %>
+    <% @check_ins.each do |checkin| %>
       <ul>
         <%= link_to image_tag(checkin.user.avatar.url(:thumb)), user_path(checkin.user) %>
       </ul>

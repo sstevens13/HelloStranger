@@ -14,17 +14,20 @@
   <tr>
     <!-- Update the time to reflect the timezone of the location or CST -->
     <!-- strftime("%A, %b %Y at %l:%M%P") -->
+    <!-- TODO helper method for signed_in? -->
     <td><%= event.start %></td>
     <td><%= event.end %></td>
     <td><%= event.location.name %></td>
     <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to 'Check-in', check_ins_path(event.id), :method => :post  %></td>
+    <% if !session[:user_id].nil? %>
+      <td><%= link_to 'Edit', edit_event_path(event) %></td>
+      <td><%= link_to 'Check-in', check_ins_path(event.id), :method => :post  %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Event', new_event_path %>
+<% if !session[:user_id].nil? %> 
+  <%= link_to 'New Event', new_event_path %>
+<% end %>
