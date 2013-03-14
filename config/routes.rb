@@ -2,7 +2,7 @@ FinalProject::Application.routes.draw do
 
 
   post 'check_ins/create/:event_id' => 'check_ins#create', :as => :check_ins
-  get 'users/:id/checkout' => 'users#checkout', :as => :checkout
+  get 'users/check_out' => 'users#check_out', :as => :check_out
 
   root to: 'events#index'
 

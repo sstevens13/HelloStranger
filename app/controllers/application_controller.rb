@@ -4,14 +4,11 @@ class ApplicationController < ActionController::Base
   helper_method :checked_in?
 
   def checked_in?
-    @user = User.find(session[:user_id])
-    if @user.nil?
+    @checked_in = CheckIn.where(user_id: session[:user_id], present: true)
+    if @checked_in.nil?
       return false
-    elsif @user
-      return false
-    else
-      return true
     end
+    return true 
   end
 
 
