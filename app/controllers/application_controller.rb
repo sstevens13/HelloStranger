@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   helper_method :checked_in?
 
   def checked_in?
-    !User.find(session[:user_id]).check_in_id.nil?
+    if !session[:user_id].nil?
+      return !User.find(session[:user_id]).check_in_id.nil?
+    end
   end
 end
 
