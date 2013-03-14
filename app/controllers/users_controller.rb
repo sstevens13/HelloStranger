@@ -9,9 +9,15 @@ class UsersController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def check_out
     checkin = CheckIn.where(:user_id => session[:user_id], :present => true)
     
+=======
+  def checkout
+    @user = User.find(params[:id])
+    @user.update_attributes(:check_in_id => nil)
+>>>>>>> 8c74b86e3b09d583c7db47a16a2f1910be37d32a
     respond_to do |format|
       format.html { redirect_to events_path }
       format.json { render json: @user, notice: 'User has been successfully checked out.' } 
@@ -31,7 +37,12 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    
+    @event_id = nil
+    if @user.check_in_id.present?
+      @event_id = CheckIn.find_by_id(@user.check_in_id).event_id
+      # TODO give events a name
+    end
+
     @is_user = false
     if @user.id == session[:user_id]
       @is_user = true
