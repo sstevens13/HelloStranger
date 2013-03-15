@@ -64,11 +64,12 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @orientation = [
-        "Bisexual",
-        "Straight",
-        "Gay"
-    ]
+    # @orientation = [
+    #     "Bisexual",
+    #     "Straight",
+    #     "Gay"
+    # ]
+    #TODO erase
 
     respond_to do |format|
       format.html # new.html.erb
@@ -86,11 +87,6 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new( params[:user] )
-    # if params["gender"].eql? "F"
-    #   @user.visible = true
-    # else
-      
-    # end
 
     respond_to do |format|
       if @user.save
@@ -99,7 +95,7 @@ class UsersController < ApplicationController
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity}
       end
     end
   end
