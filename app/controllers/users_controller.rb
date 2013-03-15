@@ -39,6 +39,7 @@ class UsersController < ApplicationController
       # TODO give events a name
     end
 
+    # used to show a person link to editing his profile
     @is_user = false
     if @user.id == session[:user_id]
       @is_user = true
@@ -49,9 +50,13 @@ class UsersController < ApplicationController
       @is_female = true
     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
+    if @user.visible || @is_user
+            respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @user }
+      end
+    else
+      redirect_to root_url, notice: "Nice Try"
     end
   end
 
@@ -81,11 +86,11 @@ class UsersController < ApplicationController
   def create
 
     @user = User.new( params[:user] )
-    if params["gender"].eql? "F"
-      @user.visible = true
-    else
+    # if params["gender"].eql? "F"
+    #   @user.visible = true
+    # else
       
-    end
+    # end
 
     respond_to do |format|
       if @user.save
