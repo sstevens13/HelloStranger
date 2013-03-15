@@ -73,9 +73,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    # @user = User.new(params[:user])
 
-    @user = User.create( params[:user] )
+    @user = User.new( params[:user] )
+    if params["gender"].eql? "F"
+      @user.visible = true
+    else
+      
+    end
 
     respond_to do |format|
       if @user.save
