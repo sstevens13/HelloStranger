@@ -9,14 +9,18 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
-  before_create :check_gender
+  before_create :set_visible
 
   private
-    def check_gender
+    def set_visible
       if self.gender.eql? "F"
         self.visible = 0  
         # using false broke the function somehow
+      else
+        self.visible = 1
       end
     end
+
+
 
 end
