@@ -40,6 +40,13 @@
   <%= @event_id %>
 </p>
 
+<% if female? %>
+  <p>
+    <b>Visible:</b>
+    <%= @user.visible %>
+  </p>
+<% end %>
+
 <p>
   <%= image_tag @user.avatar.url(:medium) %>
 <!--   <%= image_tag @user.avatar.url %>

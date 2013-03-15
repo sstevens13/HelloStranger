@@ -46,6 +46,16 @@
     <%= f.text_area :hobbies, :cols => "60", :rows => "5" %>
     <!-- TODO: column width is not correct - css is overriding -->
   </div>
+
+  <% if !session[:user_id].nil? %>
+    <% if female? %>
+      <div class="field">
+        <%= f.label :visible %><br />
+        <%= f.select :visible, [['False', 0], ['True', 1]] %>
+      </div>
+    <% end %>
+  <% end %>
+
   <p>
     <b> Avatar </b><br/>
     <%= f.file_field :avatar %>

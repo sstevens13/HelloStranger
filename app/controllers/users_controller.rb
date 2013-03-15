@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def index
     # @visible = User.visible
+    @visible = User.find_by_visible(1).limit(50)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +42,11 @@ class UsersController < ApplicationController
     @is_user = false
     if @user.id == session[:user_id]
       @is_user = true
+    end
+
+    @is_female = false
+    if @user.gender.eql? "F"
+      @is_female = true
     end
 
     respond_to do |format|
