@@ -12,7 +12,7 @@
 
 <p>
   <b>Location:</b>
-  <%= @event.location.name %>
+  <%= link_to @event.location.name, location_path(@event.location) %>
 </p>
 
 <p>
@@ -25,6 +25,9 @@
   <% @users_checked_in.each do |user| %>
     <ul>
       <%= link_to image_tag(user.avatar.url(:thumb)), user_path(user) %>
+      <% if female? %>
+        <%= link_to "Let him see me", make_visible_path(user.id), :method => :post %>
+      <% end %>
     </ul>
   <% end %>
 </p>

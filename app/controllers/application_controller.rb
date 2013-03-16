@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def female?
-  	if !session[:user_id].nil?
+  	if logged_in?
   	  if User.find(session[:user_id]).gender.eql? "F"
   	  	return true
   	  else

@@ -19,7 +19,18 @@ class UsersController < ApplicationController
   end
 
   def index
-    @visible = User.where visible: true
+    @joined_users = []
+    if female?
+      visibles = Visible.where(hidden_user: session[:user_id])  
+      visibles.each do |visible|
+        @joined_users << User.find(visible.user_of_interest)
+      end
+    else
+      visibles = Visible.where(user_of_interest: session[:user_id])
+      visibles.each do |visible|
+        @joined_users << User.find(visible.hidden_user)
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,11 +41,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+
     @user = User.find(params[:id])
-    @event_id = nil
-    if @user.check_in_id.present?
-      @event_id = CheckIn.find_by_id(@user.check_in_id).event_id
-      # TODO give events a name
+    
+    if @user.event_id.present?
+      @event = Location.find(Event.find(@user.event_id).location_id).name
     end
 
     # used to show a person link to editing his profile
