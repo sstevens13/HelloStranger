@@ -43,7 +43,8 @@ class UsersController < ApplicationController
   def show
 
     @user = User.find(params[:id])
-    
+    @is_an_interest = !Visible.where(hidden_user: params[:id], user_of_interest: @user).nil?
+
     if @user.event_id.present?
       @event = Location.find(Event.find(@user.event_id).location_id).name
     end
@@ -59,7 +60,7 @@ class UsersController < ApplicationController
       @is_female = true
     end
 
-    if @user.visible || @is_user
+    if @user.visible || @is_user || @is_an_interest
             respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @user }

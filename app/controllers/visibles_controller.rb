@@ -9,6 +9,7 @@ class VisiblesController < ApplicationController
         notice: "You've already allowed #{User.find(params[:user_id]).username} to see you!"   
     else
       Visible.create(hidden_user: session[:user_id], user_of_interest: @user_of_interest)
+      InterestMailer.interested_email(@user_of_interest, @hidden_user).deliver
       redirect_to user_path(@user_of_interest), notice: 
         "You've allowed #{User.find(params[:user_id]).username} to see you!" 
     end
