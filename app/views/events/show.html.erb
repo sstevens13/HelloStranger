@@ -17,12 +17,18 @@
 
  <p>
     <b>Check-ins:</b>
-    <% @check_ins.each do |check_in| %>
+    <% @users_checked_in.each do |user| %>
       <ul>
-        <%= link_to image_tag(check_in.avatar.url(:thumb)), user_path(check_in) %>
+        <%= link_to image_tag(user.avatar.url(:thumb)), user_path(user) %>
       </ul>
     <% end %>
- </p> 
+ </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
+  <% if @can_check_out %>
+    <%= link_to "Check out", check_out_path %>
+  <% elsif @can_check_in %>
+    <%= link_to 'Check-in', check_ins_path(@event.id), :method => :post  %>
+  <% end %>
+
+
 <%= link_to 'Back', events_path %>

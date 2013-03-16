@@ -14,7 +14,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-    @check_ins = @event.check_ins
+    @users_checked_in = @event.check_ins
+    @can_check_out = logged_in? && User.find(session[:user_id]).event_id == @event.id
+    @can_check_in = logged_in?
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }

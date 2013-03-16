@@ -19,8 +19,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    # @visible = User.visible
-    @visible = User.find_by_visible(1).limit(50)
+    @visible = User.where visible: true
 
     respond_to do |format|
       format.html # index.html.erb
