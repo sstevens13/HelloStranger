@@ -15,20 +15,25 @@
   <%= @event.location.name %>
 </p>
 
- <p>
-    <b>Check-ins:</b>
-    <% @users_checked_in.each do |user| %>
-      <ul>
-        <%= link_to image_tag(user.avatar.url(:thumb)), user_path(user) %>
-      </ul>
-    <% end %>
- </p>
-
-  <% if @can_check_out %>
-    <%= link_to "Check out", check_out_path %>
-  <% elsif @can_check_in %>
-    <%= link_to 'Check-in', check_ins_path(@event.id), :method => :post  %>
+<p>
+  <% if !@user.nil? && @user.visible == false && @user.event_id == @event.id %>
+    <%= "You are checked into this event, but no one can see you." %>
   <% end %>
+</p>
+<p>
+  <b>Check-ins:</b>
+  <% @users_checked_in.each do |user| %>
+    <ul>
+      <%= link_to image_tag(user.avatar.url(:thumb)), user_path(user) %>
+    </ul>
+  <% end %>
+</p>
+
+<% if @can_check_out %>
+  <%= link_to "Check out", check_out_path %>
+<% elsif @can_check_in %>
+  <%= link_to 'Check-in', check_ins_path(@event.id), :method => :post  %>
+<% end %>
 
 
 <%= link_to 'Back', events_path %>

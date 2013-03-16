@@ -13,8 +13,17 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+
+    @user = User.find(session[:user_id])
     @event = Event.find(params[:id])
-    @users_checked_in = @event.check_ins
+    @users_checked_in = []
+
+    @event.check_ins.each do |user|
+      if user.visible == true
+        @users_checked_in << user
+      end
+    end
+
     @can_check_out = logged_in? && User.find(session[:user_id]).event_id == @event.id
     @can_check_in = logged_in?
     
