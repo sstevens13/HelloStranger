@@ -15,7 +15,7 @@ class CheckInsController < ApplicationController
       user = User.find(@user_id)
 
       if user.check_in_id != check_in_id
-        user.update_attribute(:check_in_id, check_in_id)
+        user.update_attributes(check_in_id: check_in_id, event_id: @event_id)
         format.html { redirect_to event_path(@event_id), notice: 'Check in was successfully created.' }
         format.json { render json: event_path(@event_id), status: :created, location: @event_id }
       else

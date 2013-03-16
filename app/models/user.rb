@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   before_create :set_visible
   before_save :gendered?, :age?
 
+  def check_out
+    self.update_attributes(check_in_id: nil, event_id: nil)
+  end
+
   private
     def set_visible
       if self.gender.eql? "F"
