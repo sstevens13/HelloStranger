@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314014026) do
+ActiveRecord::Schema.define(:version => 20130318203444) do
 
   create_table "check_ins", :force => true do |t|
     t.integer  "event_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130314014026) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "check_in_id"
+    t.string   "email"
   end
 
   create_table "visibles", :force => true do |t|
