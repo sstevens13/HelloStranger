@@ -14,19 +14,22 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
 
-    @user = User.find(session[:user_id])
     @event = Event.find(params[:id])
-    @users_checked_in = []
 
-    @event.check_ins.each do |user|
-      if user.visible == true
-        @users_checked_in << user
+    if logged_in?
+      @user = User.find(session[:user_id])
+      
+      @users_checked_in = []
+      @event.check_ins.each do |user|
+        if user.visible == true
+          @users_checked_in << user
+        end
       end
+
+      @can_check_out = logged_in? && User.find(session[:user_id]).event_id == @event.id
+      @can_check_in = logged_in?
     end
 
-    @can_check_out = logged_in? && User.find(session[:user_id]).event_id == @event.id
-    @can_check_in = logged_in?
-    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
