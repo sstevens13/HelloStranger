@@ -1,4 +1,14 @@
 class LocationsController < ApplicationController
+
+
+  before_filter :authorize_user, :only => [:edit, :update, :destroy]
+   
+  def authorize_user
+    if session[:user_id].nil?
+      redirect_to root_url, notice: "Nice Try"
+    end
+  end
+
   # GET /locations
   # GET /locations.json
   def index
