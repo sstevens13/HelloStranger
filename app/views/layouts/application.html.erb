@@ -31,7 +31,7 @@
               <li><%= link_to "View Events", events_path %></li>
               <% if female? %>
                 <li><%= link_to "Guys you've let see you", users_path%></li>
-              <% elsif !female? %>
+              <% elsif logged_in? %>
                 <li><%= link_to "Interested women", users_path%></li>
               <% end %>
               <% if session[:user_id] %>
