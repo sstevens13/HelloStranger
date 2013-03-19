@@ -4,6 +4,8 @@ FinalProject::Application.routes.draw do
   get 'users/check_out' => 'users#check_out', :as => :check_out
   post 'visibles/:user_id' => 'visibles#create', :as => :make_visible
 
+  resources :favorites
+
   root to: 'events#index'
 
   get "sign_in" => 'sessions#new', :as => :sign_in
