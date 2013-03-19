@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
     end
 
     def age?
-      if (self.age <= 18)
+      if (self.age < 18)
         errors.add(:age, "You must be at least 18 years old")
         return false
       end
