@@ -18,10 +18,10 @@
   <div class="field">
     <%= f.label :location_id %>
     <%= f.collection_select :location_id, Location.all, :id, :name %>
-<!-- TODO little hacky -->
-    &nbsp;<%= link_to "Don't see your location? Add it!", new_location_url %><br>
+    &nbsp;&nbsp;<%= link_to "Don't see your location? Add it!", new_location_url %><br>
   </div>
+  </br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create Event', class: "btn btn-primary" %>
   </div>
 <% end %>
