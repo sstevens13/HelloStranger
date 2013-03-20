@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320161527) do
+ActiveRecord::Schema.define(:version => 20130320175825) do
 
   create_table "check_ins", :force => true do |t|
     t.integer  "event_id"
@@ -56,9 +56,8 @@ ActiveRecord::Schema.define(:version => 20130320161527) do
     t.string   "orientation"
     t.string   "religion"
     t.string   "gender"
-    t.integer  "event_id",            :limit => 255
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.text     "hobbies"
     t.text     "profile"
     t.string   "password_digest"
@@ -69,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20130320161527) do
     t.datetime "avatar_updated_at"
     t.integer  "check_in_id"
     t.string   "email"
+    t.integer  "event_id"
   end
 
   create_table "visibles", :force => true do |t|
