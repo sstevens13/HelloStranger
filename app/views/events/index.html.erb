@@ -11,9 +11,6 @@
 
 <% @events.each do |event| %>
   <tr>
-    <!-- Update the time to reflect the timezone of the location or CST -->
-    <!-- strftime("%A, %b %Y at %l:%M%P") -->
-    <!-- TODO helper method for signed_in? -->
     <td><%= event.event_date %></td>
     <td><%= event.location.name %></td>
     <td><%= link_to 'Show', event %></td>
@@ -27,5 +24,5 @@
 
 <br />
 <% if !session[:user_id].nil? %> 
-  <button class="btn btn-small" type="button"><%= link_to 'New Event', new_event_path %></button>
+  <button class="btn btn-large" type="button"><%= link_to 'New Event', new_event_path %></button>
 <% end %>
