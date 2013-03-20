@@ -3,8 +3,7 @@
 
 <table class="table">
   <tr>
-    <th>Start</th>
-    <th>End</th>
+    <th>Event Date</th>
     <th>Location</th>
     <th></th>
     <th></th>
@@ -16,8 +15,7 @@
     <!-- Update the time to reflect the timezone of the location or CST -->
     <!-- strftime("%A, %b %Y at %l:%M%P") -->
     <!-- TODO helper method for signed_in? -->
-    <td><%= event.start %></td>
-    <td><%= event.end %></td>
+    <td><%= event.event_date %></td>
     <td><%= event.location.name %></td>
     <td><%= link_to 'Show', event %></td>
     <% if !session[:user_id].nil? %>
