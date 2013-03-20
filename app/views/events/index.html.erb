@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <h1>Listing events</h1>
 
 <table class="table">
@@ -28,5 +27,5 @@
 
 <br />
 <% if !session[:user_id].nil? %> 
-  <%= link_to 'New Event', new_event_path %>
+  <button class="btn btn-small" type="button"><%= link_to 'New Event', new_event_path %></button>
 <% end %>
