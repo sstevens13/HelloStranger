@@ -24,8 +24,6 @@
     <td><%= user.gender %></td>
     <td><%= user.profile %></td>
     <td><%= user.hobbies %></td>
-    <% event = Event.find(user.event_id) %>
-    <td><%= link_to event.location.name, event_path(event) %></td>
 </tr>
 <% end %>
 </table>
